@@ -1,0 +1,1 @@
+alert('prueba de assets en laravel');
