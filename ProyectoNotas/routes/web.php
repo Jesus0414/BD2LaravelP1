@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +19,14 @@ Route::get('/', function () {
 });
 
 Route::get('notas', function() {
-    $notas = [
-        /*'primera nota',
+    $notas = DB::table('notas')->get();
+    /*[
+        'primera nota',
         'segunda nota',
         'tercera nota',
         'cuarta nota',
-        'quinta nota',*/
-
-    ];
+        'quinta nota',
+    ];*/
 
     return view('notas', ['notas' => $notas]);
 });
@@ -33,3 +34,10 @@ Route::get('notas', function() {
 Route::get('agregar', function() {
     return view('agregar');
 });
+
+Route::get('notas/{id}/editar', function ($id){
+    $notas = DB::table('notas')
+        ->where('id', $id)
+        ->first();
+        return 'Aqui se van a editar las notas' .$id;
+})->name('notas.edit');

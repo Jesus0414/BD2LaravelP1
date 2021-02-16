@@ -26,19 +26,24 @@ class NotasSeeder extends Seeder
         #    'contenido' => File::get(__DIR__.'/notas/install.html'),
         #]);
 
-        DB::table('notas')->insert([
-            'titulo' => 'Rutas y JSON',
-            'contenido' => File::get(__DIR__.'/notas/rutas.html'),
-        ]);
-
-        DB::table('notas')->insert([
-            'titulo' => 'Front Controller',
-            'contenido' => 'Front Controller es un patrón de arquitectura donde un controlador maneja todas las solicitudes o peticiones a un sitio web.',
-        ]);
-
+        #DB::table('notas')->insert([
+        #    'titulo' => 'Rutas y JSON',
+        #    'contenido' => File::get(__DIR__.'/notas/rutas.html'),
+        #]);
+            #
+        #DB::table('notas')->insert([
+        #    'titulo' => 'Front Controller',
+        #    'contenido' => 'Front Controller es un patrón de arquitectura donde un controlador maneja todas las solicitudes o peticiones a un sitio web.',
+        #]);
+        #
         DB::table('notas')->insert([
             'titulo' => 'Cambia el formato de parámetros dinámicos',
             'contenido' => File::get(__DIR__.'/notas/changeformato.html'),
         ]);
+
+        #DB::table('notas')->insert([
+        #    'titulo' => 'PRUEBA',
+        #    'contenido' => 'PRUEBA.',
+        #]);
     }
 }
