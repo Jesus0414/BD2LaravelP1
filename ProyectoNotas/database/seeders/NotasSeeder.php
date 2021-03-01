@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Notas;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -15,6 +15,32 @@ class NotasSeeder extends Seeder
      */
     public function run()
     {
+        Notas::create([
+            'titulo' => '¿Para qué sirve Composer?',
+            'contenido' => 'Con Composer podemos instalar y actualizar frameworks como Laravel o Symfony, así como componentes para generar PDF, procesar pagos con tarjetas, manipular imágenes y mucho más.',
+        
+        ]);
+        Notas::create([
+            'titulo' => 'Instalación de Laravel',
+            'contenido' => File::get(__DIR__.'/notas/install.html'),
+        ]);
+        Notas::create([
+            'titulo' => 'Rutas y JSON',
+            'contenido' => File::get(__DIR__.'/notas/rutas.html'),
+        ]);
+           
+        Notas::create([
+            'titulo' => 'Front Controller',
+            'contenido' => 'Front Controller es un patrón de arquitectura donde un controlador maneja todas las solicitudes o peticiones a un sitio web.',
+        ]);
+        
+        Notas::create([
+            'titulo' => 'Cambia el formato de parámetros dinámicos',
+            'contenido' => File::get(__DIR__.'/notas/changeformato.html'),
+        ]);
+
+        
+        #seeder
         #DB::table('notas')->insert([
         #    'titulo' => '¿Para qué sirve Composer?',
         #    'contenido' => 'Con Composer podemos instalar y actualizar frameworks como Laravel o Symfony, así como componentes para generar PDF, procesar pagos con tarjetas, manipular imágenes y mucho más.',
@@ -36,10 +62,10 @@ class NotasSeeder extends Seeder
         #    'contenido' => 'Front Controller es un patrón de arquitectura donde un controlador maneja todas las solicitudes o peticiones a un sitio web.',
         #]);
         #
-        DB::table('notas')->insert([
-            'titulo' => 'Cambia el formato de parámetros dinámicos',
-            'contenido' => File::get(__DIR__.'/notas/changeformato.html'),
-        ]);
+        #DB::table('notas')->insert([
+        #    'titulo' => 'Cambia el formato de parámetros dinámicos',
+        #    'contenido' => File::get(__DIR__.'/notas/changeformato.html'),
+        #]);
 
         #DB::table('notas')->insert([
         #    'titulo' => 'PRUEBA',
