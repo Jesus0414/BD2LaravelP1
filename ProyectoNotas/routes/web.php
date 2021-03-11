@@ -17,11 +17,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\NotasController@welcome');
 
-Route::get('notas', function() {
+/*Route::get('notas', function() {
     $notas = Notas::all(); //DB::table('notas')->get();
     /*[
         'primera nota',
@@ -29,28 +27,15 @@ Route::get('notas', function() {
         'tercera nota',
         'cuarta nota',
         'quinta nota',
-    ];*/
+    ];
 
     return view('notas', ['notas' => $notas]);
-})->name('notas.index');
+})->name('notas.index');*/
 
-Route::get('agregar', function() {
-    return view('agregar');
-});
+Route::get('notas', 'App\Http\Controllers\NotasController@index')->name('notas.index');
 
-Route::get('notas/{id}/editar', function ($id){
-    $notas = Notas::find($id); //DB::table('notas')->where('id', $id)->first();
-        
-    return view('editar', ['notas' => $notas]);
-        #return 'Aqui se van a editar las notas' .$id;
-})->name('notas.edit');
+Route::get('agregar', 'App\Http\Controllers\NotasController@vistaAgregar');
 
-Route::post('crear', function(Request $request){
-    Notas::create([
-        'titulo' => $request -> input('title'),
-        'contenido' => $request -> input ('content'),
-    ]);
+Route::get('notas/{id}/editar', 'App\Http\Controllers\NotasController@edit' )->name('notas.edit');
 
-    return redirect('/notas');
-
-})->name('notas.store');
+Route::post('crear', 'App\Http\Controllers\NotasController@crear')->name('notas.store');
