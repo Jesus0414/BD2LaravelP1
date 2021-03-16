@@ -17,8 +17,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\NotasController@welcome');
-
 /*Route::get('notas', function() {
     $notas = Notas::all(); //DB::table('notas')->get();
     /*[
@@ -32,10 +30,14 @@ Route::get('/', 'App\Http\Controllers\NotasController@welcome');
     return view('notas', ['notas' => $notas]);
 })->name('notas.index');*/
 
+Route::get('/', 'App\Http\Controllers\NotasController@welcome')->name('notas.raiz');
+
 Route::get('notas', 'App\Http\Controllers\NotasController@index')->name('notas.index');
 
-Route::get('agregar', 'App\Http\Controllers\NotasController@vistaAgregar');
+Route::get('agregar', 'App\Http\Controllers\NotasController@vistaAgregar')->name('notas.agregar');
+
+Route::post('crear', 'App\Http\Controllers\NotasController@crear')->name('notas.store');
 
 Route::get('notas/{id}/editar', 'App\Http\Controllers\NotasController@edit' )->name('notas.edit');
 
-Route::post('crear', 'App\Http\Controllers\NotasController@crear')->name('notas.store');
+Route::put('notas/{notas}/editar', 'App\Http\Controllers\NotasController@update' )->name('notas.update');

@@ -21,6 +21,15 @@ class NotasController extends Controller
         return view('agregar');
     }
 
+    public function crear(Request $request){
+        Notas::create([
+            'titulo' => $request -> input('title'),
+            'contenido' => $request -> input ('content'),
+        ]);
+    
+        return redirect('/notas');
+    }
+
     public function edit($id){
         $notas = Notas::find($id); //DB::table('notas')->where('id', $id)->first();
             
@@ -28,12 +37,11 @@ class NotasController extends Controller
             #return 'Aqui se van a editar las notas' .$id;
     }
 
-    public function crear(Request $request){
-        Notas::create([
-            'titulo' => $request -> input('title'),
-            'contenido' => $request -> input ('content'),
+    public function update(Notas $notas, Request $request){
+        $notas->update([
+            'titulo' => $request->input('title'),
+            'contenido' => $request->input('content'),
         ]);
-    
         return redirect('/notas');
     }
 }
