@@ -19,9 +19,9 @@ use Illuminate\Http\Request;
 
 Route::get('/', 'App\Http\Controllers\ElementosController@index')->name('elementos.index');
 
-Route::get('agregar', 'App\Http\Controllers\ElementosController@vistaAgregar')->name('notas.agregar');
+Route::get('agregar', 'App\Http\Controllers\ElementosController@vistaAgregar')->name('elementos.agregar');
 
-Route::post('crear', 'App\Http\Controllers\ElementosController@crear')->name('notas.store');
+Route::post('crear', 'App\Http\Controllers\ElementosController@crear')->name('elementos.store');
 
 Route::get('/{id}/editar', 'App\Http\Controllers\ElementosController@edit' )->name('elementos.edit');
 
